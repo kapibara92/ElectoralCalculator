@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ElectionData.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ElectionDataStoreContainer">
+    <EntitySet Name="PersonSet" EntityType="ElectionData.Store.PersonSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CandidateSet" EntityType="ElectionData.Store.CandidateSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VoteSet" EntityType="ElectionData.Store.VoteSet" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="PersonSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Pesel" Type="bigint" Nullable="false" />
+    <Property Name="Vote" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CandidateSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Party" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VoteSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Valid" Type="bit" Nullable="false" />
+    <Property Name="IsEntitled" Type="bit" Nullable="false" />
+    <Property Name="CandidateId" Type="int" Nullable="true" />
+  </EntityType>
+</Schema>
